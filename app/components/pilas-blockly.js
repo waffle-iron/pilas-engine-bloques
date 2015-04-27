@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   ejecutando: false,
+  mostrarAlternar: true,
+  mostrarVerCodigo: true,
+  mostrarGuardar: true,
   cola_deshacer: [],
 
   didInsertElement: function() {
