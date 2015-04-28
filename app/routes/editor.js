@@ -1,17 +1,25 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  setupController: function(controller,model){
-	  controller.set('model',model);
-	  controller.set('editorSimple',this.controllerFor('application').get('layoutSimple'));
-  },
   model: function(params) {
-    if (params.galeria_id !== 'new') {
-      return this.store.find('galeria', params.galeria_id);
+    if (params.idGuardado) {
+      return this.store.find('galeria', params.idGuardado);
     } else {
-      return null;
+      return this.store.createRecord('galeria', {
+          idActividad: params.idActividad,
+          nombre: null,
+          imagen: null,
+          codigo: null,
+        });
     }
   },
+
+  setupController: function(controller,model){
+	  controller.set('model',model);
+	  controller.set('editorSimple', this.controllerFor('application').get('layoutSimple'));
+	  controller.set('actividad', this.get('actividades').fromId(model.get('idActividad')));
+  },
+
   actions: {
     willTransition: function(transition) {
       var b = this.controllerFor('editor').debeGuardar();

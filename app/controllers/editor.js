@@ -1,11 +1,11 @@
 import Ember from 'ember';
-import Actividades from '../actividades';
 
 var Bootstrap = window.Bootstrap;
 
 export default Ember.Controller.extend({
+  queryParams: ['solucion'],
+  solucion: null,
   editorSimple: false,
-  actividad: Actividades.Alien,
   nombre_al_guardar: 'mi actividad',
   tmp_codigo_xml: '',
 
@@ -87,18 +87,10 @@ export default Ember.Controller.extend({
       var imagen_data = imagen.toDataURL('image/png');
 
       var juego = this.get('model');
-
-      if (juego) {
-        juego.set('nombre', this.get('nombre_al_guardar'));
-        juego.set('imagen', imagen_data);
-        juego.set('codigo', this.get('tmp_codigo_xml'));
-      } else {
-        juego = this.store.createRecord('galeria', {
-          nombre: this.get('nombre_al_guardar'),
-          imagen: imagen_data,
-          codigo: this.get('tmp_codigo_xml')
-        });
-      }
+      
+      juego.set('nombre', this.get('nombre_al_guardar'));
+      juego.set('imagen', imagen_data);
+      juego.set('codigo', this.get('tmp_codigo_xml'));
 
       juego.save();
     },
