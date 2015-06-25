@@ -1,5 +1,5 @@
 export function initialize(container, application) {
-  application.inject('route', 'actividades', 'service:actividades');
+  application.inject('route', 'actividadesService', 'service:actividades');
 }
 
 export default {
