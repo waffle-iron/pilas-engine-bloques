@@ -4,14 +4,13 @@ import Actividades from '../actividades';
 var Bootstrap = window.Bootstrap;
 
 export default Ember.Controller.extend({
-  editorSimple: false,
   actividad: Actividades.Alien,
   nombre_al_guardar: 'mi actividad',
   tmp_codigo_xml: '',
 
   debeGuardar: function() {
-    return	!this.get('editorSimple') &&
-    	this.get('actividad').obtener_codigo_en_texto() !== this.get('tmp_codigo_xml');
+    var codigo_xml = this.get('actividad').obtener_codigo_en_texto();
+    return codigo_xml !== this.get('tmp_codigo_xml');
   },
 
   inyectarRedimensionado: function() {

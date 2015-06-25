@@ -1,33 +1,24 @@
-{{#if editorSimple}}
-  <style>
-    .contenedor-editor {
-      top: 0px !important;
-    }
-  </style>
-{{/if}}
-
 <div class='contenedor-editor' id='contenedor-editor'>
 
   <div class='panel-pilas' id='panel-pilas'>
+
     {{pilas-canvas onready="reiniciar"}}
+
     <div class='panel-ayuda'>
+
       <p>{{actividad.enunciado}}</p>
+
     </div>
+
   </div>
-  
+
   <div class='panel-derecho' id='panel-derecho'>
-	  {{#if editorSimple}}
-	  	{{pilas-blockly model=model mostrarAlternar=false mostrarGuardar=false mostrarVerCodigo=false guardar='guardar' reiniciar='reiniciar' registrarPrimerCodigo='registrarPrimerCodigo' actividad=actividad}}
-	  {{else}}
-	  	{{pilas-blockly model=model guardar='guardar' reiniciar='reiniciar' registrarPrimerCodigo='registrarPrimerCodigo' actividad=actividad}}
-	  {{/if}}
+    {{pilas-blockly model=model guardar='guardar' reiniciar='reiniciar' registrarPrimerCodigo='registrarPrimerCodigo' actividad=actividad}}
   </div>
 
 </div>
 
-{{#unless editorSimple}}
-	{{#bs-modal name="modal-guardar" fade=true footerButtonsBinding="botones-modal-guardar" title="Guardar"}}
-	<p>¿Con qué nombre te gustaría guardar tu programa?</p>
-	<p>Nombre: {{input value=nombre_al_guardar}}
-	{{/bs-modal}}
-{{/unless}}
+{{#bs-modal name="modal-guardar" fade=true footerButtonsBinding="botones-modal-guardar" title="Guardar"}}
+<p>¿Con qué nombre te gustaría guardar tu programa?</p>
+<p>Nombre: {{input value=nombre_al_guardar}}
+{{/bs-modal}}
