@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Program-AR/pilas-engine-bloques.png?label=ready&title=Ready)](https://waffle.io/Program-AR/pilas-engine-bloques)
 pilas-engine-bloques
 ====================
 
